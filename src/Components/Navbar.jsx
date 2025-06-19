@@ -133,14 +133,14 @@ const Navbar = () => {
                             {selectedtab === "Trailers" && (
                                 <div>
                                     {trailer.map((e)=>(
-                                        <div key={e.sno} className='relative bg-[#1a1927] flex md:flex-row flex-col justify-start items-center mt-4 gap-3'>
+                                        <motion.div key={e.sno} className='relative bg-[#1a1927] flex md:flex-row flex-col justify-start items-center mt-4 gap-3' whileHover={{backgroundColor:"	#2a283b"}}>
                                             <div className='absolute md:bottom-2 md:left-3 bottom-20 left-3 text-sm bg-gray-800 p-0.5 text-white font-semibold'>{e.time}</div>
                                             <img src={e.img} alt={e.img} className='h-45'/>
                                             <div className=''>
                                                 <div className='text-white text-xl'>{e.name}</div>
                                                 <div className='text-gray-400 mt-2'>{e.date}</div>
                                             </div>
-                                        </div>
+                                        </motion.div>
                                     ))}
                                 </div>
                             )}
