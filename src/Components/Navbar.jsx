@@ -68,18 +68,18 @@ const Navbar = () => {
                         animate={{ x: 0 }}
                         exit={{ x: "100%" }}
                         transition={{ duration: 0.5 }}
-                        className='fixed top-0 right-0 h-screen  bg-gradient-to-r from-[#16151f] to-[#181622]  w-[45vw] z-30 shadow-2xl p-10'
+                        className='fixed top-0 right-0 h-screen  bg-gradient-to-r from-[#16151f] to-[#181622]  md:w-[45vw] w-[90vw] z-30 shadow-2xl md:p-10 p-5 md:pt-0 pt-15'
                     >
 
 
-                        <div className='flex rounded-full my-6 gap-3 justify-start mb-20'>
+                        <div className='flex rounded-full my-6 md:gap-3 justify-start mb-10'>
 
 
                             {tabs.map((tab) => (
                                 <button
                                     key={tab}
                                     onClick={() => setSelectedtab(tab)}
-                                    className={`px-5 py-3 text-md font-semibold rounded-full transition-all duration-300 ${selectedtab === tab
+                                    className={`md:px-5 px-3 py-3 md:text-md text-sm font-semibold rounded-full transition-all duration-300 ${selectedtab === tab
                                         ? 'bg-white text-gray-900'
                                         : 'text-gray-300 hover:text-white'
                                         }`}
@@ -96,17 +96,17 @@ const Navbar = () => {
 
 
                             {selectedtab === "People" && (
-                                <div className='flex flex-col justify-center h-[60vh]'>
+                                <div className='flex flex-col md:justify-center h-[60vh] pl-2'>
                                     {peoples.map((e) => (
-                                        <div key={e.name} className='hover:text-[#fff9cb] text-white text-5xl mt-0.5 font-sans font-semibold'>{e.name}</div>
+                                        <div key={e.name} className='hover:text-[#fff9cb] text-white md:text-6xl text-4xl mt-0.6 font-sans font-semibold md:tracking-tighter'>{e.name}</div>
                                     ))}
                                 </div>
                             )}
 
                             {selectedtab === "Places" && (
-                                <div className='flex flex-col justify-center h-[60vh]'>
+                                <div className='flex flex-col md:justify-center h-[60vh] pl-2'>
                                     {places.map((e) => (
-                                        <div key={e.name} className='hover:text-[#fff9cb] text-white text-5xl mt-0.5 font-sans font-semibold'>{e.name}</div>
+                                        <div key={e.name}  className='hover:text-[#fff9cb] text-white md:text-6xl text-4xl mt-0.6 font-sans font-semibold md:tracking-tight'>{e.name}</div>
                                     ))}
                                 </div>
                             )}
