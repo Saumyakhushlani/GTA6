@@ -6,7 +6,7 @@ import { useState } from 'react'
 const Navbar = () => {
     const [isnavbarOpen, setNavbarOpen] = useState(false)
     const [selectedtab, setSelectedtab] = useState("People")
-    const [image, setImage] = useState("/logo.jpeg")
+    const [image, setImage] = useState("/logo.png")
     const [imageKey, setImageKey] = useState(0)
 
     const tabs = ["People", "Places", "Trailers", "Downloads"]
@@ -31,13 +31,18 @@ const Navbar = () => {
         { name: "MOUNT KALAGA", img: "/mount.webp" }
     ];
 
+    const trailer=[
+        {sno:2,name:"Grand Theft Auto VI Trailer 2",date:"May 6,2025",time:"2:47",img:"/trailer2.webp"},
+        {sno:1,name:"Grand Theft Auto VI Trailer 1",date:"December 4,2023",time:"1:31",img:"/trailer1.webp"},
+    ]
+
     const handleImageChange = (newImage) => {
         setImage(newImage)
         setImageKey(prev => prev + 1)
     }
 
     const handleImageReset = () => {
-        setImage("/logo.webp")
+        setImage("/logo.png")
         setImageKey(prev => prev + 1)
     }
 
@@ -77,9 +82,9 @@ const Navbar = () => {
                         animate={{ x: 0 }}
                         exit={{ x: "100%" }}
                         transition={{ duration: 0.5 }}
-                        className='fixed top-0 right-0 h-screen bg-gradient-to-r from-[#16151f] to-[#181622] md:w-[45vw] w-[90vw] z-40 shadow-2xl md:p-10 p-5 md:pt-0 pt-15'
+                        className='fixed top-0 right-0 h-screen bg-gradient-to-r from-[#16151f] to-[#181622] md:w-[45vw] w-[90vw] z-40 shadow-2xl md:p-10 p-5  mb-10'
                     >
-                        <div className='flex rounded-full my-6 md:gap-3 justify-start mb-10'>
+                        <div className='flex rounded-full my-6 md:gap-3 justify-start md:mb-20'>
                             {tabs.map((tab) => (
                                 <button
                                     key={tab}
@@ -127,7 +132,16 @@ const Navbar = () => {
 
                             {selectedtab === "Trailers" && (
                                 <div>
-                                    <p>Trailers content goes here</p>
+                                    {trailer.map((e)=>(
+                                        <div key={e.sno} className='relative bg-[#1a1927] flex md:flex-row flex-col justify-start items-center mt-4 gap-3'>
+                                            <div className='absolute md:bottom-2 md:left-3 bottom-20 left-3 text-sm bg-gray-800 p-0.5 text-white font-semibold'>{e.time}</div>
+                                            <img src={e.img} alt={e.img} className='h-45'/>
+                                            <div className=''>
+                                                <div className='text-white text-xl'>{e.name}</div>
+                                                <div className='text-gray-400 mt-2'>{e.date}</div>
+                                            </div>
+                                        </div>
+                                    ))}
                                 </div>
                             )}
 
