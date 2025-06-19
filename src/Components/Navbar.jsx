@@ -6,35 +6,45 @@ import { useState } from 'react'
 const Navbar = () => {
     const [isnavbarOpen, setNavbarOpen] = useState(false)
     const [selectedtab, setSelectedtab] = useState("People")
-
+    const [image, setImage] = useState("/logo.jpeg")
+    const [imageKey, setImageKey] = useState(0)
 
     const tabs = ["People", "Places", "Trailers", "Downloads"]
 
     const peoples = [
-        { name: "JASON DUVAL", img: "" },
-        { name: "LUCIA CAMINOS", img: "" },
-        { name: "CAL HAMPTON", img: "" },
-        { name: "BOOBIE IKE", img: "" },
-        { name: "DRE'QUAN PRIEST", img: "" },
-        { name: "REAL DIMEZ", img: "" },
-        { name: "RAUL BAUTISTA", img: "" },
-        { name: "BRIAN HEDER", img: "" },
+        { name: "JASON DUVAL", img: "/jason.webp" },
+        { name: "LUCIA CAMINOS", img: "/lucia.webp" },
+        { name: "CAL HAMPTON", img: "/cal.webp" },
+        { name: "BOOBIE IKE", img: "/boobie.webp" },
+        { name: "DRE'QUAN PRIEST", img: "/drequan.webp" },
+        { name: "REAL DIMEZ", img: "/dimez.webp" },
+        { name: "RAUL BAUTISTA", img: "/raul.webp" },
+        { name: "BRIAN HEDER", img: "/brian.webp" },
     ];
 
     const places = [
-        { name: "VICE CITY", img: "" },
-        { name: "LEONIDA KEYS", img: "" },
-        { name: "GRASSRIVERS", img: "" },
-        { name: "PORT GELLHORN", img: "" },
-        { name: "AMBROSIA", img: "" },
-        { name: "MOUNT KALAGA", img: "" }
+        { name: "VICE CITY", img: "/vice.webp" },
+        { name: "LEONIDA KEYS", img: "/leonida.webp" },
+        { name: "GRASSRIVERS", img: "/Grassrivers.webp" },
+        { name: "PORT GELLHORN", img: "/port.webp" },
+        { name: "AMBROSIA", img: "/Ambrosia.webp" },
+        { name: "MOUNT KALAGA", img: "/mount.webp" }
     ];
 
+    const handleImageChange = (newImage) => {
+        setImage(newImage)
+        setImageKey(prev => prev + 1)
+    }
+
+    const handleImageReset = () => {
+        setImage("/logo.webp")
+        setImageKey(prev => prev + 1)
+    }
 
     return (
         <div className='relative'>
 
-            <div className='flex flex-row justify-between items-center text-2xl p-3 relative z-40'>
+            <div className='flex flex-row justify-between items-center text-2xl p-3 relative'>
                 <div className='font-bold text-white text-4xl'>VI</div>
 
                 <button
@@ -60,7 +70,6 @@ const Navbar = () => {
                 </button>
             </div>
 
-
             <AnimatePresence>
                 {isnavbarOpen && (
                     <motion.div
@@ -68,13 +77,9 @@ const Navbar = () => {
                         animate={{ x: 0 }}
                         exit={{ x: "100%" }}
                         transition={{ duration: 0.5 }}
-                        className='fixed top-0 right-0 h-screen  bg-gradient-to-r from-[#16151f] to-[#181622]  md:w-[45vw] w-[90vw] z-30 shadow-2xl md:p-10 p-5 md:pt-0 pt-15'
+                        className='fixed top-0 right-0 h-screen bg-gradient-to-r from-[#16151f] to-[#181622] md:w-[45vw] w-[90vw] z-40 shadow-2xl md:p-10 p-5 md:pt-0 pt-15'
                     >
-
-
                         <div className='flex rounded-full my-6 md:gap-3 justify-start mb-10'>
-
-
                             {tabs.map((tab) => (
                                 <button
                                     key={tab}
@@ -89,16 +94,18 @@ const Navbar = () => {
                             ))}
                         </div>
 
-
-
                         <div className='text-white'>
-
-
-
                             {selectedtab === "People" && (
                                 <div className='flex flex-col md:justify-center h-[60vh] pl-2'>
                                     {peoples.map((e) => (
-                                        <div key={e.name} className='hover:text-[#fff9cb] text-white md:text-6xl text-4xl mt-0.6 font-sans font-semibold md:tracking-tighter'>{e.name}</div>
+                                        <div 
+                                            key={e.name} 
+                                            className='hover:text-[#fff9cb] text-white md:text-6xl text-4xl mt-0.6 font-sans font-semibold md:tracking-tighter' 
+                                            onMouseEnter={() => handleImageChange(e.img)} 
+                                            onMouseLeave={() => handleImageReset()}
+                                        >
+                                            {e.name}
+                                        </div>
                                     ))}
                                 </div>
                             )}
@@ -106,7 +113,14 @@ const Navbar = () => {
                             {selectedtab === "Places" && (
                                 <div className='flex flex-col md:justify-center h-[60vh] pl-2'>
                                     {places.map((e) => (
-                                        <div key={e.name}  className='hover:text-[#fff9cb] text-white md:text-6xl text-4xl mt-0.6 font-sans font-semibold md:tracking-tight'>{e.name}</div>
+                                        <div 
+                                            key={e.name} 
+                                            className='hover:text-[#fff9cb] text-white md:text-6xl text-4xl mt-0.6 font-sans font-semibold md:tracking-tight' 
+                                            onMouseEnter={() => handleImageChange(e.img)} 
+                                            onMouseLeave={() => handleImageReset()}
+                                        >
+                                            {e.name}
+                                        </div>
                                     ))}
                                 </div>
                             )}
@@ -126,8 +140,44 @@ const Navbar = () => {
                     </motion.div>
                 )}
             </AnimatePresence>
+
+            <AnimatePresence mode="wait">
+                {isnavbarOpen && (
+                    <motion.img
+                        key={imageKey} 
+                        src={image}
+                        className='w-[75vw] fixed left-0 z-10 top-0 object-cover h-full'
+                        initial={{ 
+                            x: 0, 
+                             
+                            opacity: 0,
+                            filter: "blur(10px)"
+                        }}
+                        animate={{ 
+                            x: "-10vw", 
+                          
+                            opacity: 1,
+                            filter: "blur(0px)"
+                        }}
+                        exit={{ 
+                            
+                            opacity: 0,
+                            filter: "blur(5px)",
+                            transition: { duration: 0.3 }
+                        }}
+                        transition={{ 
+                            duration: 2,
+                            ease: "easeOut",
+                            scale: { duration: 0.6 },
+                            filter: { duration: 0.4 },
+                            opacity:{duration:0.4}
+                        }}
+                    />
+                )}
+            </AnimatePresence>
+
         </div>
     )
 }
 
-export default Navbar   
+export default Navbar
