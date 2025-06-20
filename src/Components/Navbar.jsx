@@ -68,7 +68,7 @@ const Navbar = () => {
     return (
         <div className="relative">
             <div className="flex flex-row justify-between items-center text-2xl p-3 relative">
-                <div className="font-bold text-white text-4xl">VI</div>
+                <div className="font-bold text-white text-4xl z-50 fixed left-4 top-4">VI</div>
 
                 <button
                     onClick={() => setNavbarOpen(!isnavbarOpen)}
