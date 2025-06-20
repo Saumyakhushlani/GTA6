@@ -14,29 +14,34 @@ const springVar = {
 };
 
 export default function Hero() {
-  const { scrollYProgress, scrollY } = useScroll();
+  const { scrollY } = useScroll();
 
   const maskSize = useSpring(
-    useTransform(scrollYProgress, [0, 1], ["4800px", "250px"]),
+    useTransform(scrollY, [0, 776], ["4800px", "250px"]),
     springVar
   );
 
   const maskPosition = useSpring(
-    useTransform(scrollYProgress, [0, 1], [-1200, 87]),
+    useTransform(scrollY, [0, 776], [-1200, 87]),
     springVar
   );
 
   const scaleOuter = useSpring(
-    useTransform(scrollYProgress, [0, 1], [1.2, 1]),
+    useTransform(scrollY, [0, 776, 1552], [1.2, 1, 0]),
     springVar
   );
 
   const opacityOuter = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [1, 0]),
+    useTransform(scrollY, [0, 155.2], [1, 0]),
     springVar
   );
   return (
-    <div className="h-[300vh] bg-gradient-to-r from-[#121217] to-[#181624]">
+    <motion.div
+      className="h-[1552px] bg-gradient-to-r from-[#121217] to-[#181624] z-0"
+      style={{
+        opacity: useTransform(scrollY, [776, 1552], [1, 0]),
+      }}
+    >
       {/* Hero image */}
       <motion.div
         style={{
@@ -50,8 +55,8 @@ export default function Hero() {
         <motion.img
           src="/gta_logo_purple.webp"
           style={{
-            scale: useTransform(scrollYProgress, [0.99, 1], [0.8, 1]),
-            opacity: useTransform(scrollYProgress, [0.99, 1], [0, 1]),
+            scale: useTransform(scrollY, [700, 776,1000, 1552], [0.8, 1,1, 0]),
+            opacity: useTransform(scrollY, [700, 776,1000, 1552], [0, 1,1, 0]),
           }}
           className="mt-[30px] scale-60"
         />
@@ -64,8 +69,8 @@ export default function Hero() {
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
             textWrap: "balance",
-            opacity: useTransform(scrollYProgress, [0.95, 1], [0, 1]),
-            //   position: useTransform(scrollYProgress, [0.9, 1], ["fixed", "absolute"]),
+            opacity: useTransform(scrollY, [700, 776,1000, 1100], [0, 1,1, 0]),
+            scale: useTransform(scrollY, [1000, 1552], [1, 0]),
           }}
         >
           Coming
@@ -74,15 +79,15 @@ export default function Hero() {
           <br />
           2026
         </motion.h3>
-
       </motion.div>
 
       {/* Mask image */}
       <motion.div
-        className='fixed flex m-auth w-full h-full inset-0 [mask-image:url("/logo_white.svg")] [mask-repeat:no-repeat] bg-white'
+        className='fixed flex m-auth w-full h-full inset-0 [mask-image:url("/logo_white.svg")] [mask-repeat:no-repeat] bg-white z-0'
         style={{
           maskSize: maskSize,
           maskPosition: useMotionTemplate`center ${maskPosition}px`,
+          opacity: useTransform(scrollY, [776, 1000], [1, 0]),
         }}
       >
         {/* Inner image */}
@@ -94,12 +99,11 @@ export default function Hero() {
         ></motion.div>
         <motion.div
           style={{
-            opacity: useTransform(scrollYProgress, [0.9, 1], [0, 1]),
+            opacity: useTransform(scrollY, [700, 776], [0, 1]),
           }}
           className="fixed inset-0 h-full w-full bg-white"
         />
       </motion.div>
-      {console.log(scrollY)}
-    </div>
+    </motion.div>
   );
 }
