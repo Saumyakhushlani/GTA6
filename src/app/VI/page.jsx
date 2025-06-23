@@ -1,22 +1,38 @@
-import React from "react";
+"use client";
+import React, { useState, useEffect } from "react";
 import Navbar from "@/Components/Navbar";
 import Footer from "@/Components/Footer";
 import Hero from "@/Components/Hero";
+import LoadingAnimation from "@/Components/LoadingAnimation";
 
 const page = () => {
+  const [contentLoaded, setContentLoaded] = useState(false);
+
+  useEffect(() => {
+    // Delay showing content until after loading animation
+    const timer = setTimeout(() => {
+      setContentLoaded(true);
+    }, 3500); // Slightly longer than the loading animation duration
+    
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <div className="bg-[#111111] min-h-screen flex flex-col gap-1">
-      {/* Hero Section */}
-      {/* <section className="z-10"> */}
-      <Hero />
-      {/* </section> */}
+    <>
+      <LoadingAnimation />
+      {contentLoaded && (
+        <div className="bg-gradient-to-r from-[#121217] to-[#181624] min-h-screen flex flex-col gap-1">
+          {/* Hero Section */}
+          <Hero />
 
-      {/* Navbar */}
-      <Navbar />
+          {/* Navbar */}
+          <Navbar />
 
-      {/* Footer */}
-      <Footer />
-    </div>
+          {/* Footer */}
+          <Footer />
+        </div>
+      )}
+    </>
   );
 };
 
