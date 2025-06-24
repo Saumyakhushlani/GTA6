@@ -141,7 +141,7 @@ const LoadingAnimation = () => {
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             >
               <img
-                src="/logo_white.svg"
+                src="/rockstar_logo.svg"
                 alt="GTA Logo"
                 className="w-48 md:w-64 h-auto"
               />
