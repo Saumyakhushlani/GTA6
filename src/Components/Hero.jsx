@@ -48,7 +48,7 @@ export default function Hero() {
           scale: scaleOuter,
           opacity: opacityOuter,
         }}
-        className="fixed inset-0 h-full w-full bg-[url('/Hero.jpg')] bg-fixed bg-cover"
+        className="fixed inset-0 h-full w-full bg-[url('/Hero.jpg')] bg-fixed bg-cover bg-center"
       ></motion.div>
 
       <motion.div className="flex flex-col items-center h-full text-white fixed inset-0">
@@ -83,7 +83,7 @@ export default function Hero() {
 
       {/* Mask image */}
       <motion.div
-        className='fixed flex m-auth w-full h-full inset-0 [mask-image:url("/logo_white.svg")] [mask-repeat:no-repeat] bg-white z-0'
+        className='fixed flex m-auth w-full h-full inset-0 [mask-image:url("/logo_white.svg")] [mask-repeat:no-repeat] bg-white z-0 mask-center'
         style={{
           maskSize: maskSize,
           maskPosition: useMotionTemplate`center ${maskPosition}px`,
@@ -95,7 +95,7 @@ export default function Hero() {
           style={{
             scale: scaleOuter,
           }}
-          className="fixed inset-0 h-full w-full bg-[url('/Hero.jpg')] bg-fixed bg-cover"
+          className="fixed inset-0 h-full w-full bg-[url('/Hero.jpg')] bg-fixed bg-cover bg-center"
         ></motion.div>
         <motion.div
           style={{

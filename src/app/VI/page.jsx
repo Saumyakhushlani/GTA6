@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import Navbar from "@/Components/Navbar";
 import Footer from "@/Components/Footer";
 import Hero from "@/Components/Hero";
+import Leonida from "@/Components/Leonida";
+import Hampton from "@/Components/Hampton";
 import LoadingAnimation from "@/Components/LoadingAnimation";
 
 const page = () => {
@@ -27,8 +29,9 @@ const page = () => {
 
           {/* Navbar */}
           <Navbar />
-
-          {/* Footer */}
+          <Leonida/>
+          <Hampton/>
+          
           <Footer />
         </div>
       )}
