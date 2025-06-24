@@ -167,6 +167,20 @@ const LoadingAnimation = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
           >
+            {/* GTA Logo
+            <motion.div 
+              variants={gtaLogoVariants}
+              initial="hidden"
+              animate="visible"
+              className="mb-2"
+            >
+              <img 
+                src="/gta_logo_purple.webp" 
+                alt="GTA Logo" 
+                className="h-16 md:h-24"
+              />
+            </motion.div> */}
+
             {/* VI Number */}
             <motion.div
               variants={viNumberVariants}
