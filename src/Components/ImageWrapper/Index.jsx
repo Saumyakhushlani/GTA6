@@ -10,7 +10,9 @@ import { motion } from "motion/react";
  * @param {string} props.alt - Alternative text for the image.
  * @param {string} props.className - Additional CSS classes for styling.
  * @param {string} [props.bgcolor="#36364e"] - Background color of the icon container.
- * @param {string} [props.colorOnHover="#fff9cc"] - Color of the icon on hover.
+ * @param {string} [props.colorOnHover="#fff9cc"] - Color of the icon.
+ * @param {number} [props.scaleX=0.98] - Scale factor for the X-axis on hover.
+ * @param {number} [props.scaleY=0.97] - Scale factor for the Y-axis on hover.
  * @returns {JSX.Element} Rendered ImageWrapper component.
  * @example
  * <ImageWrapper
@@ -32,6 +34,8 @@ function Index({
   className,
   bgcolor = "#36364e",
   colorOnHover = "#fff9cc",
+  scaleX = 0.98,
+  scaleY = 0.97,
 }) {
   const [isHovered, setIsHovered] = useState(false);
   return (
@@ -45,8 +49,7 @@ function Index({
       >
         <motion.img
           whileHover={{
-            scaleX: 0.97,
-            scaleY: 0.95,
+            scaleX, scaleY
           }}
           transition={{
             duration: 0.3,

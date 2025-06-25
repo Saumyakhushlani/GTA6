@@ -6,6 +6,7 @@ import Hero from "@/Components/Hero";
 import Leonida from "@/Components/Leonida";
 import Hampton from "@/Components/Hampton";
 import LoadingAnimation from "@/Components/LoadingAnimation";
+import Lucia_caminos from "@/Components/Lucia_caminos";
 
 const page = () => {
   const [contentLoaded, setContentLoaded] = useState(false);
@@ -26,6 +27,9 @@ const page = () => {
         <div className="bg-gradient-to-r from-[#121217] to-[#181624] min-h-screen flex flex-col gap-1">
           {/* Hero Section */}
           <Hero />
+
+          {/* Lucia Caminos */}
+          <Lucia_caminos /> 
 
           {/* Navbar */}
           <Navbar />
