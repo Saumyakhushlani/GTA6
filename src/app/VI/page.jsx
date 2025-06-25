@@ -7,6 +7,7 @@ import Leonida from "@/Components/Leonida";
 import Hampton from "@/Components/Hampton";
 import LoadingAnimation from "@/Components/LoadingAnimation";
 import Lucia_caminos from "@/Components/Lucia_caminos";
+import Jason_duval from "@/Components/Jason_duval";
 
 const page = () => {
   const [contentLoaded, setContentLoaded] = useState(false);
@@ -28,14 +29,17 @@ const page = () => {
           {/* Hero Section */}
           <Hero />
 
+          {/* Jason duval */}
+          <Jason_duval />
+          
           {/* Lucia Caminos */}
-          <Lucia_caminos /> 
+          <Lucia_caminos />
 
           {/* Navbar */}
           <Navbar />
-          <Leonida/>
-          <Hampton/>
-          
+          <Leonida />
+          <Hampton />
+
           <Footer />
         </div>
       )}
